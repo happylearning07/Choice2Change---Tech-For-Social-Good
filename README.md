@@ -2,6 +2,8 @@
 <img width="1860" height="872" alt="image" src="https://github.com/user-attachments/assets/a5dcf99a-e17f-4a82-8763-609768075ae6" />
 
 **Tech for Social Good Hackathon**
+## Demo Video
+https://youtu.be/z1Jc9fBoB10
 
 A friendly, instant, and personal way to see how today’s choices—**Transport, Diet, Energy**—change your carbon footprint right now. Make a choice → see the effect → get a gentle nudge for a cleaner swap.
 
