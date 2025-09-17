@@ -95,4 +95,4 @@ Deploy the /build folder to any static host (Vercel, Netlify, GitHub Pages, etc.
 
 4. Google S2 Favicon for lightweight source favicons
 
--------------------------------------------------------------------- THANK YOU ------------------------------------------------------------------------------------------------
+# THANK YOU
