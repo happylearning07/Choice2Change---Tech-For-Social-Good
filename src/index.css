@@ -1,0 +1,1948 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 20px 20px 0 0;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Specific card styling */
+.transport-card::before {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.diet-card::before {
+  background: linear-gradient(90deg, #f97316, #ea580c);
+}
+
+.energy-card::before {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+}
+
+.charts-card::before {
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+}
+
+.suggestions-card::before {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.carbon-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.carbon-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.carbon-low {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.carbon-medium {
+  background: #fef5e7;
+  color: #744210;
+}
+
+.carbon-high {
+  background: #fed7d7;
+  color: #742a2a;
+}
+
+.suggestion-card {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  border: none;
+}
+
+.suggestion-card h4 {
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.suggestion-card p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Card Styles */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-title h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.card-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.carbon-display {
+  text-align: right;
+}
+
+.carbon-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+/* Transport Card Styles */
+.transport-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.transport-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.transport-option:hover {
+  border-color: var(--option-color);
+  transform: translateY(-2px);
+}
+
+.transport-option.active {
+  border-color: var(--option-color);
+  background: var(--option-color);
+  color: white;
+}
+
+.transport-impact {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.impact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.impact-value {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 16px;
+}
+
+/* Diet Card Styles */
+.meal-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12px;
+  text-transform: capitalize;
+}
+
+.meal-select {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.meal-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.meal-select option {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.meal-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.meal-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.meal-option:hover {
+  border-color: var(--option-color);
+}
+
+.meal-option.active {
+  border-color: var(--option-color);
+  background: var(--option-color);
+  color: white;
+}
+
+.diet-impact {
+  margin-top: 20px;
+}
+
+.impact-summary h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.impact-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.impact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.meal-name {
+  font-weight: 500;
+  color: #374151;
+  text-transform: capitalize;
+}
+
+.meal-carbon {
+  font-weight: 600;
+  color: #ef4444;
+}
+
+/* Energy Card Styles */
+.heating-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.heating-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.heating-option:hover {
+  border-color: var(--option-color);
+}
+
+.heating-option.active {
+  border-color: var(--option-color);
+  background: var(--option-color);
+  color: white;
+}
+
+.appliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.appliance-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.appliance-option:hover {
+  border-color: #3b82f6;
+}
+
+.appliance-option.active {
+  border-color: #3b82f6;
+  background: #3b82f6;
+  color: white;
+}
+
+.consumption {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.energy-impact {
+  margin-top: 20px;
+}
+
+/* Visualization Styles */
+.visualization-card {
+  margin-bottom: 30px;
+}
+
+.rating-display {
+  text-align: right;
+}
+
+.carbon-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.rating-excellent {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.rating-good {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.rating-fair {
+  background: #fed7aa;
+  color: #9a3412;
+}
+
+.rating-poor {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.rating-emoji {
+  font-size: 16px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.chart-container {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.chart-container h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.insights-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.insight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+}
+
+.insight-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.insight-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.insight-content p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.target-progress {
+  margin-top: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.savings-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.savings-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+/* Suggestions Styles */
+.suggestions-card {
+  margin-bottom: 30px;
+}
+
+.suggestion-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.suggestion-controls .btn {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+.suggestion-controls .btn.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+.loading-icon {
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.suggestion-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid var(--priority-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.suggestion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.suggestion-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.suggestion-icon {
+  font-size: 24px;
+}
+
+.suggestion-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.suggestion-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.suggestion-priority {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--priority-color);
+}
+
+.suggestion-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.suggestion-description {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.suggestion-impact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.impact-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.impact-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--priority-color);
+}
+
+.suggestion-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.suggestion-note {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #374151;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* New Components Styles */
+.appliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.appliance-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.appliance-option:hover {
+  border-color: #3b82f6;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+}
+
+.appliance-option.active {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.appliance-option small {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* Charts Section */
+.charts-section {
+  margin: 30px 0;
+}
+
+.charts-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.chart-item {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.chart-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.breakdown-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.breakdown-bar {
+  height: 20px;
+  border-radius: 10px;
+  min-width: 4px;
+  transition: width 0.3s ease;
+}
+
+.breakdown-bar.transport {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.breakdown-bar.diet {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.breakdown-bar.energy {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.breakdown-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  min-width: 120px;
+}
+
+.progress-chart {
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.progress-percentage {
+  font-size: 18px;
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Enhanced Suggestions */
+.suggestions-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.suggestion-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.suggestion-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.suggestion-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.suggestion-content p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.suggestion-impact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.impact-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #059669;
+}
+
+.priority-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.priority-high {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.priority-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-low {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* Enhanced Cards */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.transport-card {
+  border-left: 4px solid #ef4444;
+}
+
+.diet-card {
+  border-left: 4px solid #f59e0b;
+}
+
+.energy-card {
+  border-left: 4px solid #3b82f6;
+}
+
+.suggestions-card {
+  border-left: 4px solid #8b5cf6;
+}
+
+.charts-card {
+  border-left: 4px solid #10b981;
+}
+
+/* Enhanced Form Elements */
+.select, .input {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.select:focus, .input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+  
+  .carbon-score {
+    font-size: 2rem;
+  }
+
+  .header-left h1 {
+    font-size: 2rem;
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .suggestions-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .appliance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .suggestion-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .suggestion-icon {
+    font-size: 24px;
+  }
+}
+
+/* Beautiful Charts */
+.beautiful-charts {
+  margin-top: 1rem;
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* (original glass style) */
+.chart-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chart-container h4 {
+  margin: 0 0 1rem 0;
+  color: #f3f4f6;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.chart-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #8b5cf6, #44f63b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-icon {
+  font-size: 2rem;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f3f4f6;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.custom-tooltip {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Emoji Popup */
+.emoji-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.emoji-popup {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #f3f4f6;
+}
+
+.popup-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.earth-emoji-large {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.popup-header h3 {
+  color: #f3f4f6;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.mood-indicator {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.carbon-display {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.carbon-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f3f4f6;
+  margin-bottom: 0.5rem;
+}
+
+.carbon-label {
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+.message-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.message-box p {
+  color: #f3f4f6;
+  font-size: 1.1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.tips-section {
+  margin-bottom: 2rem;
+}
+
+.tips-section h4 {
+  color: #f3f4f6;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.tips-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-section li {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-section {
+  margin-bottom: 2rem;
+}
+
+.progress-label {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-emoji {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-emoji:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 768px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .chart-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===========================
+   HIGH-CONTRAST OVERRIDES
+   (for charts card + stats)
+   =========================== */
+
+/* Darken inner chart panels and ensure text is readable */
+.chart-container {
+  background: rgba(17, 24, 39, 0.85) !important; /* slate-900-ish */
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
+/* Chart titles on dark bg should be solid white for max contrast */
+.chart-title {
+  background: none !important;
+  -webkit-text-fill-color: unset !important;
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* Headings in the small chart boxes */
+.chart-container h4 {
+  color: #ffffff !important;
+}
+
+/* Stat tiles below charts */
+.stat-item {
+  background: rgba(17, 24, 39, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
+.stat-value {
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+.stat-label {
+  color: #e5e7eb !important; /* gray-200 */
+}
+
+/* Recharts default tooltip (when not using custom) */
+.recharts-default-tooltip {
+  background: rgba(17, 24, 39, 0.95) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
+/* ===========================
+   HEADER: Hide/Show Charts button
+   =========================== */
+.btn-toggle-charts {
+  background: #111827;       /* true dark */
+  color: #ffffff;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
+}
+
+.btn-toggle-charts:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.btn-toggle-charts:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+/* Give the emoji + toggle a little breathing room */
+.header-buttons { gap: 0.75rem; }
+
+/* ===========================
+   COMPACT CARD LAYOUT
+   =========================== */
+.compact-card { padding: 20px; }
+.compact-card .card-header { margin-bottom: 16px; padding-bottom: 12px; }
+.compact-card .card-title h3 { font-size: 1.25rem; }
+
+/* two-column on wider screens to cut vertical length */
+@media (min-width: 900px) {
+  .compact-card .card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+    align-items: start;
+  }
+}
+
+/* tighten groups */
+.compact-card .form-group { margin-bottom: 12px; }
+
+/* option grids: smaller tiles, tighter gaps */
+.transport-card .transport-options,
+.diet-card .meal-options {
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.transport-card .transport-option,
+.diet-card .meal-option {
+  padding: 10px 8px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* dark "impact" subpanels to visually match charts */
+.transport-impact,
+.diet-impact,
+.energy-impact {
+  background: rgba(17, 24, 39, 0.85);             /* slate-900-ish */
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+.transport-impact .impact-item,
+.energy-impact .impact-item,
+.diet-impact .impact-item {
+  color: #e5e7eb;
+}
+
+.transport-impact .impact-value,
+.energy-impact .impact-value,
+.diet-impact .meal-carbon {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* energy: make appliance tiles a touch tighter too */
+.energy-card .appliance-grid {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+.energy-card .appliance-option {
+  padding: 12px 10px;
+  border-radius: 12px;
+}
+
+/* mobile: fall back to single column */
+@media (max-width: 768px) {
+  .compact-card .card-content { display: block; }
+}
+
+/* ===== RIGHT-ALIGN KPI CHIPS + BUTTON IN CARD HEADERS ===== */
+.card-header{
+  display: grid;
+  grid-template-columns: 1fr auto;   /* title | right column */
+  align-items: center;
+  gap: 8px 16px;
+  position: relative;
+}
+
+.card-title{
+  grid-column: 1/2;
+  min-width: 0;
+}
+
+.card-right{
+  grid-column: 2/3;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.kpi-row{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.kpi-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.card-right .btn-toggle-charts{
+  align-self: flex-end;
+}
+
+/* Mobile alignment for header chips/buttons */
+@media (max-width: 768px){
+  .card-header{
+    grid-template-columns: 1fr;
+  }
+  .card-right{
+    grid-column: 1/-1;
+    align-items: flex-start;
+  }
+  .kpi-row{
+    justify-content: flex-start;
+  }
+}
+
+/* ============================
+   AI POWERED SUGGESTIONS — DARK, GLOWY, 3D
+   ============================ */
+
+/* Base dark card */
+.suggestions-card{
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(239,68,68,0.08) 0%, rgba(0,0,0,0) 60%),
+              radial-gradient(1200px 600px at 80% 0%, rgba(59,130,246,0.10) 0%, rgba(0,0,0,0) 60%),
+              linear-gradient(180deg, #0b1220 0%, #0e1526 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 12px 32px rgba(0,0,0,0.35);
+}
+
+/* Grid that wraps nicely on any width */
+.suggestions-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* Suggestion tile */
+.suggestion-item{
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 6px;
+
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 16px 18px;
+  color: #e5e7eb;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  transform: translateZ(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.suggestion-item:hover{
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow:
+    0 18px 36px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+
+.suggestion-item::after{
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: 16px;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(600px 240px at 20% 0%, rgba(245,158,11,0.15) 0%, transparent 60%),
+              radial-gradient(600px 240px at 80% 0%, rgba(59,130,246,0.18) 0%, transparent 60%);
+  transition: opacity .25s ease;
+}
+.suggestion-item:hover::after{ opacity: 1; }
+
+.suggestion-icon{
+  grid-column: 1/2;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  font-size: 26px;
+  line-height: 1;
+  color: #fff;
+  background: linear-gradient(135deg, #f97316 0%, #ef4444 90%);
+  box-shadow: 0 6px 18px rgba(239,68,68,0.35);
+}
+
+.suggestion-item h4{
+  grid-column: 2/3;
+  margin: 0;
+  font-weight: 700;
+  color: #f9fafb;
+  letter-spacing: .2px;
+}
+
+.suggestion-item p{
+  grid-column: 2/3;
+  margin: 4px 0 0 0;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.suggestion-impact{
+  grid-column: 2/3;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: 1px solid rgba(16,185,129,0.5);
+  border-radius: 999px;
+  padding: 8px 12px;
+  box-shadow: 0 8px 20px rgba(16,185,129,0.25);
+}
+
+.priority-high   { background: linear-gradient(135deg,#ef4444,#b91c1c); color:#fff; }
+.priority-medium { background: linear-gradient(135deg,#f59e0b,#b45309); color:#fff; }
+.priority-low    { background: linear-gradient(135deg,#10b981,#047857); color:#fff; }
+
+.suggestions-card .card-header{
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.suggestions-card .card-title h3{
+  color: #f3f4f6;
+}
+
+/* Mobile polish */
+@media (max-width: 768px){
+  .suggestions-grid{ grid-template-columns: 1fr; }
+  .suggestion-item{ grid-template-columns: 40px 1fr; }
+  .suggestion-icon{ width: 40px; height: 40px; font-size: 22px; }
+}
+
+/* =========================================
+   DARK THEME CARDS (not the page background)
+   ========================================= */
+.transport-card,
+.diet-card,
+.energy-card,
+.suggestions-card {
+  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow: 0 14px 36px rgba(0,0,0,.38) !important;
+}
+
+.transport-card .card-title h3,
+.diet-card .card-title h3,
+.energy-card .card-title h3,
+.suggestions-card .card-title h3 {
+  color: #f3f4f6 !important;
+}
+
+.transport-card .form-group label,
+.diet-card .form-group label,
+.energy-card .form-group label,
+.transport-card .meal-label,
+.diet-card .meal-label {
+  color: #e5e7eb !important;
+}
+
+.transport-card .form-group input,
+.transport-card .form-group select,
+.diet-card .form-group input,
+.diet-card .form-group select,
+.energy-card .form-group input,
+.energy-card .form-group select {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* ===============================
+   AI-Powered Suggestions contrast
+   =============================== */
+.suggestions-card {
+  background: linear-gradient(180deg, #0b1220 0%, #0e1628 100%) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+}
+
+.suggestions-card .card-title h3 { color: #f3f4f6 !important; }
+.suggestions-card .card-icon     { color: #f59e0b !important; }
+
+.suggestions-card .suggestions-grid .suggestion-item {
+  background: linear-gradient(180deg, #1e293b 0%, #111827 100%) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  color: #e5e7eb !important;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+.suggestions-card .suggestion-item h4 { color: #f8fafc !important; }
+.suggestions-card .suggestion-item p  { color: #cbd5e1 !important; }
+
+.suggestions-card .suggestion-impact {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(16,185,129,.55) !important;
+  box-shadow: 0 8px 22px rgba(16,185,129,.28) !important;
+}
+
+.suggestions-card .suggestions-grid .suggestion-item:hover {
+  transform: translateY(-6px) !important;
+  border-color: rgba(255,255,255,.18) !important;
+  box-shadow:
+    0 20px 44px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.06) inset !important;
+}
+
+/* ===== FINAL OVERRIDE: Suggestions backdrop (area behind the three tiles) ===== */
+.suggestions-card {
+  background:
+    radial-gradient(1200px 600px at 12% -10%, rgba(21, 243, 236, 0.856), transparent 60%),
+    radial-gradient(1200px 600px at 88% -10%, rgb(5, 244, 164), transparent 60%),
+    linear-gradient(180deg, #1164e9 0%, #3779db 100%) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 32px rgba(0,0,0,.35) !important;
+}
+.suggestions-card .card-title h3 { color: #f3f4f6 !important; }
+.suggestions-card .card-header { border-bottom: 1px solid rgba(255,255,255,.12) !important; }
+
+/* ===== FINAL OVERRIDE: Carbon Footprint Analysis backdrop ===== */
+.charts-card{
+  background:
+    radial-gradient(1200px 600px at 14% -10%, rgba(170, 221, 15, 0.9), transparent 60%),
+    radial-gradient(1200px 600px at 86% -10%, rgba(12, 205, 239, 0.902), transparent 60%),
+    linear-gradient(180deg, #f342b8 0%, #df2de8 100%) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 32px rgba(0,0,0,.35) !important;
+}
+
+/* Header + divider on the charts card */
+.charts-card .card-title h3{ color:#f3f4f6 !important; }
+.charts-card .card-header{ border-bottom:1px solid rgba(255,255,255,.12) !important; }
+
+/* Make any light chart boxes inside this card match the dark theme */
+.charts-card .chart-item{
+  background: rgba(17,24,39,.9) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color:#fff !important;
+}
+.charts-card .chart-item h4,
+.charts-card .chart-title{ color:#ffffff !important; text-shadow:none !important; }
+
+/* Legend/readability on dark background */
+.charts-card .legend-item{ color:#cbd5e1 !important; }
+.charts-card .legend-color{ box-shadow:0 0 0 1px rgba(5, 207, 243, 0.797) inset; }
+
+/* Optional: polish the toggle button when it sits on the dark card */
+.charts-card .btn-toggle-charts{
+  background:#0fe317d2 !important;
+  border-color:#19cee6 !important;
+  color:#fff !important;
+}
+
+/* ===== FINAL OVERRIDE: Transport / Diet / Energy backdrops ===== */
+
+/* Transport: warm red→orange highlights on deep slate */
+.transport-card{
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(239,68,68,0.30), transparent 60%),
+    radial-gradient(1100px 520px at 88% -8%, rgba(249,115,22,0.22), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #0e1626 100%) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 32px rgba(0,0,0,.35) !important;
+}
+.transport-card .card-header{ border-bottom:1px solid rgba(255,255,255,.12) !important; }
+.transport-card .card-title h3{ color:#f3f4f6 !important; }
+
+/* Diet: amber/peach glow on deep slate */
+.diet-card{
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(245,158,11,0.28), transparent 60%),
+    radial-gradient(1100px 520px at 88% -8%, rgba(251,146,60,0.22), transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #0e1626 100%) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 32px rgba(0,0,0,.35) !important;
+}
+.diet-card .card-header{ border-bottom:1px solid rgba(255,255,255,.12) !important; }
+.diet-card .card-title h3{ color:#f3f4f6 !important; }
+
+/* Energy: blue/teal glow to echo charts */
+.energy-card{
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(59,130,246,0.26), transparent 60%),
+    radial-gradient(1100px 520px at 88% -8%, rgba(16,185,129,0.24), transparent 60%),
+    linear-gradient(180deg, #0b2a46 0%, #0f334f 100%) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 12px 32px rgba(0,0,0,.35) !important;
+}
+.energy-card .card-header{ border-bottom:1px solid rgba(255,255,255,.12) !important; }
+.energy-card .card-title h3{ color:#f3f4f6 !important; }
+
+/* Ensure form labels remain readable on colored cards (already set above) */
+.transport-card .form-group label,
+.diet-card .form-group label,
+.energy-card .form-group label { color:#e5e7eb !important; }
+
+/* Option tiles stay light and pop on the dark/colored panels */
+.transport-card .transport-option,
+.diet-card .meal-option,
+.energy-card .appliance-option { background:#ffffff; }
