@@ -87,12 +87,12 @@ Deploy the /build folder to any static host (Vercel, Netlify, GitHub Pages, etc.
 
 # Acknowledgements
 
-lucide-react for crisp icons
+1. lucide-react for crisp icons
 
-Recharts for chart primitives
+2. Recharts for chart primitives
 
-AllOrigins for safe RSS fetching
+3. AllOrigins for safe RSS fetching
 
-Google S2 Favicon for lightweight source favicons
+4. Google S2 Favicon for lightweight source favicons
 
-    
+-------------------------------------------------------------------- THANK YOU ------------------------------------------------------------------------------------------------
